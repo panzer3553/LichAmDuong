@@ -79,8 +79,8 @@ public class CaldroidSampleActivity extends AppCompatActivity {
             args.putBoolean(CaldroidFragment.SIX_WEEKS_IN_CALENDAR, true);
 
             // Uncomment this to customize startDayOfWeek
-            // args.putInt(CaldroidFragment.START_DAY_OF_WEEK,
-            // CaldroidFragment.TUESDAY); // Tuesday
+             args.putInt(CaldroidFragment.START_DAY_OF_WEEK,
+             CaldroidFragment.MONDAY); // Tuesday
 
             // Uncomment this line to use Caldroid in compact mode
             // args.putBoolean(CaldroidFragment.SQUARE_TEXT_VIEW_CELL, false);

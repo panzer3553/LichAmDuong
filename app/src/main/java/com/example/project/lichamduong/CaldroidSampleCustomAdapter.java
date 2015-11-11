@@ -98,9 +98,12 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 		}
 
 		tv1.setText("" + dateTime.getDay());
-		int[] amLichDate = DateUtil.convertSolar2Lunar(dateTime.getDay(), dateTime.getMonth(),
+		int[] lunarDate = DateUtil.convertSolar2Lunar(dateTime.getDay(), dateTime.getMonth(),
 				dateTime.getYear(), 7.0);
-		tv2.setText("" + amLichDate[0]);
+        String lunarDayFormat = Integer.toString(lunarDate[0]);
+        if(lunarDate[0] == 1)
+            lunarDayFormat = Integer.toString(lunarDate[0]) + "/" + Integer.toString(lunarDate[1]);
+		tv2.setText("" + lunarDayFormat);
 
 		// Somehow after setBackgroundResource, the padding collapse.
 		// This is to recover the padding
