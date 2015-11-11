@@ -39,10 +39,10 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 		int bottomPadding = cellView.getPaddingBottom();
 		int rightPadding = cellView.getPaddingRight();
 
-		TextView tv1 = (TextView) cellView.findViewById(R.id.tv1);
-		TextView tv2 = (TextView) cellView.findViewById(R.id.tv2);
+		TextView solarDayTextView = (TextView) cellView.findViewById(R.id.solarDay);
+		TextView lunarDayTextView = (TextView) cellView.findViewById(R.id.lunarDay);
 
-		tv1.setTextColor(Color.BLACK);
+        solarDayTextView.setTextColor(Color.BLACK);
 
 		// Get dateTime of this cell
 		DateTime dateTime = this.datetimeList.get(position);
@@ -50,7 +50,7 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 
 		// Set color of the dates in previous / next month
 		if (dateTime.getMonth() != month) {
-			tv1.setTextColor(resources
+            solarDayTextView.setTextColor(resources
 					.getColor(com.caldroid.R.color.caldroid_darker_gray));
 		}
 
@@ -62,7 +62,7 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 				|| (maxDateTime != null && dateTime.gt(maxDateTime))
 				|| (disableDates != null && disableDates.indexOf(dateTime) != -1)) {
 
-			tv1.setTextColor(CaldroidFragment.disabledTextColor);
+            solarDayTextView.setTextColor(CaldroidFragment.disabledTextColor);
 			if (CaldroidFragment.disabledBackgroundDrawable == -1) {
 				cellView.setBackgroundResource(com.caldroid.R.drawable.disable_cell);
 			} else {
@@ -82,7 +82,7 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 			cellView.setBackgroundColor(resources
 					.getColor(com.caldroid.R.color.caldroid_sky_blue));
 
-			tv1.setTextColor(Color.BLACK);
+            solarDayTextView.setTextColor(Color.BLACK);
 
 		} else {
 			shouldResetSelectedView = true;
@@ -97,13 +97,13 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 			}
 		}
 
-		tv1.setText("" + dateTime.getDay());
+        solarDayTextView.setText("" + dateTime.getDay());
 		int[] lunarDate = DateUtil.convertSolar2Lunar(dateTime.getDay(), dateTime.getMonth(),
 				dateTime.getYear(), 7.0);
         String lunarDayFormat = Integer.toString(lunarDate[0]);
         if(lunarDate[0] == 1)
             lunarDayFormat = Integer.toString(lunarDate[0]) + "/" + Integer.toString(lunarDate[1]);
-		tv2.setText("" + lunarDayFormat);
+        lunarDayTextView.setText("" + lunarDayFormat);
 
 		// Somehow after setBackgroundResource, the padding collapse.
 		// This is to recover the padding
@@ -111,7 +111,7 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 				bottomPadding);
 
 		// Set custom color if required
-		setCustomResources(dateTime, cellView, tv1);
+		setCustomResources(dateTime, cellView, solarDayTextView);
 
 		return cellView;
 	}

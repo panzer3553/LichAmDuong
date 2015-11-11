@@ -8,14 +8,14 @@
     android:padding="5dp" >
 
     <TextView
-        android:id="@+id/tv1"
+        android:id="@+id/solarDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40px"
         android:layout_gravity="left" />
 
     <TextView
-        android:id="@+id/tv2"
+        android:id="@+id/lunarDay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="25px"
