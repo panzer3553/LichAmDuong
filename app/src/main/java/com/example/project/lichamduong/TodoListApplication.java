@@ -1,11 +1,17 @@
 package com.example.project.lichamduong;
 
 import android.app.Application;
+import android.util.Log;
 
+import com.example.project.lichamduong.helper.AppConfig;
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class TodoListApplication extends Application {
 	
@@ -19,10 +25,18 @@ public class TodoListApplication extends Application {
 		ParseObject.registerSubclass(Todo.class);
 		// enable the Local Datastore
 		Parse.enableLocalDatastore(getApplicationContext());
-		Parse.initialize(this, "rfkHewFjlhtWEZLAQ3x69kyf0dXm8pOh99I2eNTw", "x8HFTTy4Z8Y6eGHMGyBmwv86D0t0ORzQcfvuhob9");
+		Parse.initialize(this, AppConfig.PARSE_APPLICATION_ID, AppConfig.PARSE_CLIENT_KEY);
 		ParseUser.enableAutomaticUser();
 		ParseACL defaultACL = new ParseACL();
-		ParseACL.setDefaultACL(defaultACL, true);	
+		ParseACL.setDefaultACL(defaultACL, true);
+		ParseInstallation.getCurrentInstallation().saveInBackground();
+		ParsePush.subscribeInBackground(AppConfig.PARSE_CHANNEL, new SaveCallback() {
+			@Override
+			public void done(ParseException e) {
+				Log.e("Parse", "Successfully subscribed to Parse!");
+			}
+		});
+
 	}
 	
 	

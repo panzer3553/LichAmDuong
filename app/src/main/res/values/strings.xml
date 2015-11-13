@@ -14,7 +14,7 @@
     <string name="error_name">enter a username</string>
     <string name="error_password">enter a password</string>
     <string name="password_mismatch">enter the same password twice</string>
-    <string name="todo_prompt">Enter todo details:</string>
+    <string name="todo_prompt">Noi dung ghi chu:</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>

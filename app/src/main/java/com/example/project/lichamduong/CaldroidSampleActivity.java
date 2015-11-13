@@ -222,7 +222,7 @@ public class CaldroidSampleActivity extends AppCompatActivity {
 //                textView.setText(text);
 //            }
 //        });
-//
+////
 //        Button showDialogButton = (Button) findViewById(R.id.show_dialog_button);
 //
 //        final Bundle state = savedInstanceState;

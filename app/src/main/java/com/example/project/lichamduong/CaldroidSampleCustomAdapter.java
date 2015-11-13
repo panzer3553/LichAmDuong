@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.project.lichamduong.helper.DateUtil;
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidGridAdapter;
 
@@ -114,6 +115,14 @@ public class CaldroidSampleCustomAdapter extends CaldroidGridAdapter {
 		setCustomResources(dateTime, cellView, solarDayTextView);
 
 		return cellView;
+	}
+
+	public static String[] can = new String[]{"Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"};
+	public static String[] chi = new String[]{"Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"};
+	public static String getCanChiYear(int year) {
+		int sodu_can = (year + 6) % 10;
+		int sodu_chi = (year + 8) % 12;
+		return can[sodu_can] + " " + chi[sodu_chi];
 	}
 
 }
